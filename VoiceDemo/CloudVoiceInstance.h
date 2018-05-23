@@ -30,6 +30,10 @@ public:
 	BOOL openSpeaker();
 	BOOL closeSpeaker();
 
+	BOOL micVolAdd();
+	BOOL micVolDee();
+	BOOL speakerAdd();
+	BOOL speakerDee();
 private:
 	IGCloudVoiceEngine *mCloudEngine;
 	DWORD mErrorCode;

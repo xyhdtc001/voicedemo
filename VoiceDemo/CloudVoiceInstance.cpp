@@ -147,6 +147,51 @@ BOOL CloudVoiceInstance::closeMc()
 	return FALSE;
 }
 
+BOOL CloudVoiceInstance::micVolAdd()
+{
+	if (mRoomStatus == GV_ON_JOINROOM_SUCC &&mInstanceState)
+	{
+		int nLev = mCloudEngine->GetMicLevel(); 
+		TRACE(_T("mic vol :%d \n"),nLev);
+		GCloudVoiceErrno res =mCloudEngine->SetMicVolume(500);
+		return TRUE;
+	}
+	return FALSE;
+}
+
+BOOL CloudVoiceInstance::micVolDee()
+{
+	if (mRoomStatus == GV_ON_JOINROOM_SUCC &&mInstanceState)
+	{
+		int nLev = mCloudEngine->GetMicLevel();
+		GCloudVoiceErrno res = mCloudEngine->SetMicVolume(0x0000);
+		return TRUE;
+	}
+	return FALSE;
+}
+
+BOOL CloudVoiceInstance::speakerAdd()
+{
+	if (mRoomStatus == GV_ON_JOINROOM_SUCC &&mInstanceState)
+	{
+		int nLev = mCloudEngine->GetSpeakerLevel();
+		GCloudVoiceErrno res = mCloudEngine->SetSpeakerVolume(0xFFFF);
+		return TRUE;
+	}
+	return FALSE;
+}
+
+BOOL CloudVoiceInstance::speakerDee()
+{
+	if (mRoomStatus == GV_ON_JOINROOM_SUCC &&mInstanceState)
+	{
+		int nLev = mCloudEngine->GetSpeakerLevel();
+		GCloudVoiceErrno res = mCloudEngine->SetSpeakerVolume(10);
+		return TRUE;
+	}
+	return FALSE;
+}
+
 std::string CloudVoiceInstance::getGuid()
 {
 	string strRes = "";

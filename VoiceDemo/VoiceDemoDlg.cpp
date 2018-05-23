@@ -71,9 +71,10 @@ BEGIN_MESSAGE_MAP(CVoiceDemoDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON2, &CVoiceDemoDlg::OnBnClickedButton2)
 	ON_BN_CLICKED(IDC_BUTTON4, &CVoiceDemoDlg::OnBnClickedButton4)
 	ON_BN_CLICKED(IDC_BUTTON6, &CVoiceDemoDlg::OnBnClickedButton6)
-	ON_BN_CLICKED(IDC_BUTTON5, &CVoiceDemoDlg::OnBnClickedButton5)
 	ON_BN_CLICKED(IDC_BUTTON3, &CVoiceDemoDlg::OnBnClickedButton3)
 	ON_BN_CLICKED(IDC_BUTTON8, &CVoiceDemoDlg::OnBnClickedButton8)
+	ON_BN_CLICKED(IDC_BUTTON_spadd, &CVoiceDemoDlg::OnBnClickedButtonspadd)
+	ON_BN_CLICKED(IDC_BUTTON_spdee, &CVoiceDemoDlg::OnBnClickedButtonspdee)
 END_MESSAGE_MAP()
 
 
@@ -189,6 +190,7 @@ void CVoiceDemoDlg::OnTimer(UINT_PTR nIDEvent)
 		if (1)
 		{
 			mInstance->Poll();
+			//mInstance->micVolAdd();
 		}
 	}
 }
@@ -208,18 +210,21 @@ void CVoiceDemoDlg::OnBnClickedButton2()
 void CVoiceDemoDlg::OnBnClickedButton4()
 {
 	//mic ++
+	mInstance->micVolAdd();
 }
 
 
 void CVoiceDemoDlg::OnBnClickedButton6()
 {
 	// mic --
+	mInstance->micVolDee();
 }
 
 
 void CVoiceDemoDlg::OnBnClickedButton5()
 {
 	// speaker++
+	mInstance->closeMc();
 }
 
 
@@ -234,4 +239,18 @@ void CVoiceDemoDlg::OnBnClickedButton3()
 void CVoiceDemoDlg::OnBnClickedButton8()
 {
 	mInstance->closeMc();
+}
+
+
+void CVoiceDemoDlg::OnBnClickedButtonspadd()
+{
+	// TODO:  在此添加控件通知处理程序代码
+	mInstance->speakerAdd();
+}
+
+
+void CVoiceDemoDlg::OnBnClickedButtonspdee()
+{
+	// TODO:  在此添加控件通知处理程序代码
+	mInstance->speakerDee();
 }
